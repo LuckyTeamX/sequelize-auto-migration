@@ -41,3 +41,6 @@ For more information, use `makemigration --help`, `runmigration --help`
 * Need to check (and maybe fix) field types: `BLOB`, `RANGE`, `ARRAY`, `GEOMETRY`, `GEOGRAPHY`
 * Downgrade is not supported, add it
 * This module tested with postgresql (I use it with my projects). Test with mysql and sqlite.
+
+## Bug fix
+* Model's indexes can be updated when model of previous state have no indexes

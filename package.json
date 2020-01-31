@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/flexxnn/sequelize-auto-migrations.git"
+    "url": "git+https://github.com/LuckyTeamX/sequelize-auto-migrations.git"
   },
   "keywords": [
     "sequelize",
@@ -21,9 +21,13 @@
   "author": "Michael Maslov",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/flexxnn/sequelize-auto-migrations/issues"
+    "url": "https://github.com/LuckyTeamX/sequelize-auto-migrations/issues"
   },
-  "homepage": "https://github.com/flexxnn/sequelize-auto-migrations#readme",
+  "bin": {
+    "sam-make-migration": "./bin/makemigration.js",
+    "sam-run-migration": "./bin/runmigration.js"
+  },
+  "homepage": "https://github.com/LuckyTeamX/sequelize-auto-migrations#readme",
   "dependencies": {
     "async": "^2.5.0",
     "command-line-args": "^4.0.6",
