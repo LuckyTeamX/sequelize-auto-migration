@@ -1,4 +1,6 @@
 # sequelize-auto-migrations
+**works with sequelize@4**
+
 Migration generator &amp;&amp; runner for sequelize
 
 This package provide two tools:

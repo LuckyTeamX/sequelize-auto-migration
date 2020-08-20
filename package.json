@@ -1,6 +1,6 @@
 {
-  "name": "sequelize-auto-migrations",
-  "version": "1.0.0",
+  "name": "sequelize-migrations",
+  "version": "1.0.2",
   "description": "Sequelize migrations generator && runner",
   "main": "index.js",
   "scripts": {
@@ -34,7 +34,9 @@
     "deep-diff": "^0.3.8",
     "js-beautify": "^1.6.14",
     "lodash": "^4.17.4",
-    "object-hash": "^1.1.8",
+    "object-hash": "^1.1.8"
+  },
+  "peerDependencies": {
     "sequelize": "^4.3.2"
   }
 }
