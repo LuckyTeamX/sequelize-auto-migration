@@ -24,8 +24,8 @@
     "url": "https://github.com/LuckyTeamX/sequelize-auto-migrations/issues"
   },
   "bin": {
-    "sam-make-migration": "./bin/makemigration.js",
-    "sam-run-migration": "./bin/runmigration.js"
+    "makemigration": "./bin/makemigration.js",
+    "runmigration": "./bin/runmigration.js"
   },
   "homepage": "https://github.com/LuckyTeamX/sequelize-auto-migrations#readme",
   "dependencies": {
