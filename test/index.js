@@ -7,7 +7,9 @@ class User extends Model {}
 User.init({
     username: DataTypes.STRING,
     birthday: DataTypes.DATE
-}, { sequelize, modelName: 'user' });
+}, { sequelize, modelName: 'user', indexes: [{
+    fields: ['username']
+    }] });
 
 
 
