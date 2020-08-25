@@ -5,30 +5,36 @@ const { Sequelize, Model, DataTypes } = require('sequelize');
 let migrate = require("../lib/migrate");
 
 
-const sequelize = new Sequelize('sqlite::memory:');
+function createSequelize() {
+    const sequelize = new Sequelize('sqlite::memory:');
 
 
-class User extends Model {}
-User.init({
-    username: DataTypes.STRING,
-    birthday: {
-        type: DataTypes.DATE,
-        unique: true
-    },
-    part1: {
-        type: DataTypes.DATE,
-        unique: 'partial'
-    },
-    part2: {
-        type: DataTypes.DATE,
-        unique: 'partial'
+    class User extends Model {
     }
-}, { sequelize, modelName: 'user', indexes: [{
-    fields: ['username']
-    }] });
 
+    User.init({
+        username: DataTypes.STRING,
+        birthday: {
+            type: DataTypes.DATE,
+            unique: true
+        },
+        part1: {
+            type: DataTypes.DATE,
+            unique: 'partial'
+        },
+        part2: {
+            type: DataTypes.DATE,
+            unique: 'partial'
+        }
+    }, {
+        sequelize, modelName: 'user', indexes: [{
+            fields: ['username']
+        }]
+    });
+    return {sequelize};
+}
 
-let ResponseActions = [
+let Migrations = [
     [
         {
             "actionType": "addColumn",
@@ -66,7 +72,7 @@ let ResponseActions = [
         },
         {
             "fields": [
-                "username"
+                {name: "username"}
             ],
             "name": "users_username",
             "options": {
@@ -96,11 +102,11 @@ let ResponseActions = [
         }
     ],
     [],
-    []
 ]
 
 describe("indexes", () => {
     it("test migration using unique attribute in definition of fields", () => {
+        const {sequelize} = createSequelize();
         // current state
         const currentState = {
             tables: {}
@@ -146,19 +152,20 @@ describe("indexes", () => {
         let actions = migrate.parseDifference(previousState.tables, currentState.tables);
         migrate.sortActions(actions);
 
-        actions.should.deep.equal(ResponseActions[0])
+        actions.should.deep.equal(Migrations[0])
 
 
         //let migration = migrate.getMigration(actions);
     });
-
     it("test migration without changes", () => {
+        const {sequelize} = createSequelize();
+
         // current state
         const currentState = {
             tables: {}
         };
 // load last state
-        let previousState = {
+        const previousState = {
             revision: 0,
             version: 1,
             tables: {
@@ -225,7 +232,7 @@ describe("indexes", () => {
         let actions = migrate.parseDifference(previousState.tables, currentState.tables);
         migrate.sortActions(actions);
 
-        actions.should.deep.equal(ResponseActions[2])
+        actions.should.deep.equal(Migrations[1])
 
 
         //let migration = migrate.getMigration(actions);
