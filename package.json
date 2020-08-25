@@ -1,8 +1,12 @@
 {
   "name": "sequelize-migrations",
-  "version": "2.0.3",
+  "version": "2.1.1",
   "description": "Sequelize migrations generator && runner",
   "main": "index.js",
+  "files": [
+    "lib",
+    "bin"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -18,7 +22,7 @@
     "db",
     "sql"
   ],
-  "author": "Michael Maslov, continued by Daler Akhmetov",
+  "author": "Michael Maslov & Daler Akhmetov",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/LuckyTeamX/sequelize-auto-migrations/issues"
@@ -37,7 +41,12 @@
     "object-hash": "^1.1.8"
   },
   "devDependencies": {
-    "sqlite3": "^5.0.0"
+    "@types/chai": "^4.2.12",
+    "@types/mocha": "^8.0.3",
+    "chai": "^4.2.0",
+    "mocha": "^8.1.1",
+    "sqlite3": "^5.0.0",
+    "sequelize": "^5.22.3"
   },
   "peerDependencies": {
     "sequelize": "^5.22.3"
