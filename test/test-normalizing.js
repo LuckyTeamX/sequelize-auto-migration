@@ -63,9 +63,74 @@ describe("normalizing", () => {
                     }
                 }
             },
+            "BotOrder": {
+                "tableName": "BotOrder",
+                "schema": {
+                    "id": {
+                        "allowNull": false,
+                        "primaryKey": true,
+                        "autoIncrement": true,
+                        "seqType": "Sequelize.INTEGER"
+                    },
+                    "gold": {
+                        "allowNull": true,
+                        "seqType": "Sequelize.INTEGER"
+                    },
+                    "wgItemId": {
+                        "allowNull": false,
+                        "defaultValue": {
+                            "value": 34
+                        },
+                        "seqType": "Sequelize.INTEGER"
+                    },
+                    "type": {
+                        "allowNull": true,
+                        "seqType": "Sequelize.STRING(20)"
+                    },
+                    "status": {
+                        "allowNull": false,
+                        "seqType": "Sequelize.STRING(24)"
+                    },
+                    "priceRub": {
+                        "allowNull": false,
+                        "seqType": "Sequelize.INTEGER"
+                    },
+                    "succeedAt": {
+                        "allowNull": true,
+                        "seqType": "Sequelize.DATE"
+                    },
+                    "createdAt": {
+                        "allowNull": false,
+                        "seqType": "Sequelize.DATE"
+                    },
+                    "updatedAt": {
+                        "allowNull": false,
+                        "seqType": "Sequelize.DATE"
+                    },
+                    "UserId": {
+                        "allowNull": true,
+                        "references": {
+                            "model": "User",
+                            "key": "id"
+                        },
+                        "onDelete": "NO ACTION",
+                        "onUpdate": "CASCADE",
+                        "seqType": "Sequelize.INTEGER"
+                    }
+                },
+                "indexes": {
+                    "d103d5a36ecc9c6a593b5896130e9283f4d781f1": {
+                        "fields": [
+                            "status"
+                        ],
+                        "options": {}
+                    }
+                }
+            },
         };
 
-        migrate.normalizeState(previousState);
+        let normalizedState = migrate.normalizeState(previousState);
+        console.log(normalizedState);
     })
 })
 
