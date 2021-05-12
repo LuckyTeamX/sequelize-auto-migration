@@ -68,7 +68,8 @@ let Migrations = [
             },
             "depends": [
                 "users"
-            ]
+            ],
+            "touchedProperty": "unique"
         },
         {
             "fields": [
@@ -151,6 +152,7 @@ describe("indexes", () => {
 
         let actions = migrate.parseDifference(previousState.tables, currentState.tables);
         migrate.sortActions(actions);
+        let migration = migrate.getMigration(actions);
 
         actions.should.deep.equal(Migrations[0])
 
